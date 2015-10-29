@@ -11,7 +11,7 @@ It's easy to start dreaming up features and start hacking them together, but I f
 
 I'm going to start with a Python script that gets data from arkservers.net and pushes it into Firebase.  (The script's role will be to maintain and curate the Firbase state). The data from arkservers isn't as complete as I'd like it to be (specifically, I want to know what Tribe a player belongs to), so this script will add more data (mechanism TBD).
 
-The future
+The Future
 ----------
 
 Nope, there's no future.  This is just a mini hackathon-type project, please don't expect maintenance or support.
