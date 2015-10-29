@@ -1,5 +1,7 @@
 from datetime import datetime, timedelta
+import json
 
+import arrow
 import requests
 
 def get_ark_data(ark_server_uri):
@@ -11,6 +13,15 @@ def get_ark_data(ark_server_uri):
 def get_players(ark_server_uri):
     api_data = get_ark_data(ark_server_uri)
     return [Player(**p) for p in api_data['players']]
+
+class PlayerEncoder(json.JSONEncoder):
+    def default(self, obj):
+        if not isinstance(obj, Player):
+            return super().default(self, obj)
+        return {
+            name: obj.name,
+            last_login_time: int(arrow.utcnow() - timedelta(seconds=obj.time)),
+        }
 
 class Player():
     def __init__(self, **kwargs):
@@ -25,5 +36,5 @@ class Player():
 
     @property
     def login_time(self):
-        """ Datetime object corresponding to when this user last logged in. """
-        return datetime.now() - timedelta(seconds=self.time)
+        """ When this user last logged in. """
+        return arrow.now() - timedelta(seconds=self.time)
