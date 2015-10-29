@@ -17,10 +17,12 @@ def get_players(ark_server_uri):
 class PlayerEncoder(json.JSONEncoder):
     def default(self, obj):
         if not isinstance(obj, Player):
-            return super().default(self, obj)
+            return super().default(obj)
+
+        timestamp = (arrow.utcnow() - timedelta(seconds=obj.time)).timestamp
         return {
-            name: obj.name,
-            last_login_time: int(arrow.utcnow() - timedelta(seconds=obj.time)),
+            'name': obj.name,
+            'last_login_time': int(timestamp),
         }
 
 class Player():
