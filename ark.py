@@ -5,8 +5,6 @@ import data
 from log import getLogger
 from player import Player
 
-
-
 class Ark():
     def __init__(self, name):
         self.name = name
