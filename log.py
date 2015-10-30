@@ -13,7 +13,7 @@ def prepare_logging():
     fh.setLevel(logging.INFO)
 
     ch = logging.StreamHandler()
-    ch.setLevel(logging.DEBUG)
+    ch.setLevel(logging.WARN)
 
     formatter = logging.Formatter('%(asctime)s - %(levelname)s - %(funcName)s - %(message)s')
     fh.setFormatter(formatter)
