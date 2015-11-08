@@ -58,5 +58,8 @@ docs/_build/
 Scripts/
 pyvenv.cfg
 
+#ipython
+share/*
+
 # PyBuilder
 target/
